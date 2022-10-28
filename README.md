@@ -1,4 +1,4 @@
-## SEIR 712 August 16, 2021
+
 
 [![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
@@ -228,33 +228,7 @@ function ComponentA() {
 
 </details>
 
-We can use the Context API without using the the `useContext` hook, but it's not as elegant or intuitive:
 
-```js
-import React from 'react';
-import { DataContext } from './DataContext';
-
-function ComponentB() {
-  return (
-    <div>
-      <DataContext.Consumer>
-        {({ userInfo }) => {
-          console.log('this is name', userInfo.name);
-          return (
-            <div>
-              <h2>This is Component B</h2>
-              <p> username is: {userInfo.name} </p>
-              <p> fav color: {userInfo.favColor} </p>
-            </div>
-          );
-        }}
-      </DataContext.Consumer>
-    </div>
-  );
-}
-
-export default ComponentB;
-```
 
 ## State Management
 
