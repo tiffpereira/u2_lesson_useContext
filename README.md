@@ -124,8 +124,6 @@ Both require the same setup for the provider.
 ```js
 DataContext.jsx
 
-import React from 'react'
-
 export const DataContext = React.createContext();
 // It returns an object with 2 values:
 // { Provider, Consumer }
@@ -158,7 +156,7 @@ function App() {
 Now that a Provider is set up we can get its value from the `DataContext` that we exported. To do this, we can use the [`useContext`](https://reactjs.org/docs/hooks-reference.html) Hook. As with all of the Hooks we've seen, we'll need to import `useContext` to use it in our component.
 
 ```js
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 ```
 
 Additionally, we need to import the context that we want to use:
@@ -171,7 +169,7 @@ import { DataContext } from './DataContext';
 The `useContext` Hook lets us get at the data in the Context provider even if our component is not a direct child of the provider (it must be a descendant of the provider, but it can be nested any number of levels below it). To consume the data, we create a local variable to store the data, and assign it the return value of the useContext Hook when passed the context:
 
 ```jsx
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { DataContext } from './DataContext';
 
 function ComponentA() {
@@ -200,7 +198,7 @@ How can we improve this with destructuring? How can we update the data?
 Use destructuring to create two variables from the the object in Context.
 
 ```jsx
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { DataContext } from "./DataContext";
 
 function ComponentA() {
