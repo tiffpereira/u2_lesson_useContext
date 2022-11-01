@@ -153,7 +153,7 @@ function App() {
       <h2>React Context..using useContext</h2>
       <DataContext.Provider value={{ userInfo, setUserInfo }}>
         <ComponentA />
-        <ComponentB />
+        <ComponentC />
       </DataContext.Provider>
     </div>
   );
@@ -234,6 +234,136 @@ function ComponentA() {
 ```
 
 </details>
+
+Lets see what we can do with context between our components: 
+
+```jsx
+import { useContext } from "react";
+import { DataContext } from "./DataContext";
+
+function ComponentB() {
+  const { userInfo, setUserInfo } = useContext(DataContext);
+  return (
+    <div>
+      <h2>This is Component B</h2>
+      <p>
+        <p>{userInfo.name}'s favorite color is </p>
+        <p style={{ color: userInfo.favColor }}>{userInfo.favColor}</p>.
+      </p>
+      
+      <button
+        onClick={() =>
+          setUserInfo({
+            ...userInfo,
+            favColor: "orange"
+          })
+        }
+      >
+        Change to Orange
+      </button>
+      
+      <button
+        onClick={() =>
+          setUserInfo({
+            ...userInfo,
+            favColor: "pink"
+          })
+        }
+      >
+        Change to Pink
+      </button>
+    </div>
+  );
+```
+
+
+
+```jsx
+import { useContext } from "react";
+import { DataContext } from "./DataContext";
+
+function ComponentC() {
+  const { userInfo, setUserInfo } = useContext(DataContext);
+  return (
+    <div>
+      <h2>This is Component D</h2>
+    
+        <p>{userInfo.name}'s favorite movie is {userInfo.favMovie}</p>.
+
+      
+      <button
+        onClick={() =>
+          setUserInfo({
+            ...userInfo,
+            favColor: "aqua",
+            favFood: "Ribs"
+          })
+        }
+      >
+        Change to Aqua
+      </button>
+      
+      <button
+        onClick={() =>
+          setUserInfo({
+            ...userInfo,
+            favColor: "pink",
+            favMovie: "Yojimbo"
+          })
+        }
+      >
+        Change to Pink
+      </button>
+    </div>
+  );
+```
+
+```jsx
+import { useContext } from "react";
+import { DataContext } from "./DataContext";
+
+function ComponentB() {
+  const { userInfo, setUserInfo } = useContext(DataContext);
+  return (
+    <div>
+      <h2>This is Component B</h2>
+      
+        <p>{userInfo.name}'s favorite food is </p>
+        <p style={{ color: userInfo.favColor }}>
+            {userInfo.favFood}
+            </p>.
+   
+      
+      <button
+        onClick={() =>
+          setUserInfo({
+            ...userInfo,
+            favColor: "brown"
+          })
+        }
+      >
+        Change to Brown
+      </button>
+      
+      <button
+        onClick={() =>
+          setUserInfo({
+            ...userInfo,
+            favMovie: "Big Lebowski"
+          })
+        }
+      >
+        Change Movie
+      </button>
+    </div>
+  );
+```
+
+
+
+Each of our components can now effect the others, without the use of Props or State in each component!
+
+However, when working with live data, you may still need State and useEffect
 
 
 
