@@ -121,6 +121,13 @@ Both require the same setup for the provider.
 
 `React.createContext()` will be created in the parent Component and then it will use `.Provider` to pass the data using the `value` prop. Since context is meant to provide and make accessible data at a more global level it must be exported from the parent and then imported by any children that need to access the data.
 
+
+- Lets touch 5 files - DataContext.jsx, and then Components A, B, C, and D.
+- Set your .App's display to be a flex row that is justified evenly.
+- Nest component B inside of Component A, Component D inside of Component C,  then nest Components A and C inside of App.  You should have 2 parent components on your screen, each nesting 1 child component.
+
+Data Context is pretty small, but it packs a whole bunch of power. 
+
 ```js
 DataContext.jsx
 
@@ -137,6 +144,8 @@ function App() {
   const [userInfo, setUserInfo] = useState({
     name: 'Jeremy',
     favColor: 'blue',
+    favFood: 'chicken parmesean'
+    favMovie: 'Goodfellas'
   });
 
   return (
